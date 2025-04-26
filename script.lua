@@ -52,28 +52,3 @@ createUI()
 
 repeat task.wait() until getgenv().ScyllaKey
 print("Cheat loaded successfully!")
-
--- After script loads
-if getgenv().ScyllaKey then
-    -- Check for premium functions
-    for k,v in pairs(ScyllaKey) do
-        if type(v) == "function" and tostring(k):lower():find("premium") then
-            print("Premium function found:", k)
-        end
-    end
-    
-    -- Check for premium tables
-    if ScyllaKey.PremiumFeatures then
-        print("Premium features table exists")
-    end
-end
-local premiumIndicators = {"vip", "premium", "paid", "license", "pro"}
-for k,v in pairs(ScyllaKey) do
-    if type(v) == "function" then
-        for _, term in ipairs(premiumIndicators) do
-            if string.find(k:lower(), term) then
-                print("Potential premium function:", k)
-            end
-        end
-    end
-end
