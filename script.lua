@@ -67,3 +67,13 @@ if getgenv().ScyllaKey then
         print("Premium features table exists")
     end
 end
+local premiumIndicators = {"vip", "premium", "paid", "license", "pro"}
+for k,v in pairs(ScyllaKey) do
+    if type(v) == "function" then
+        for _, term in ipairs(premiumIndicators) do
+            if string.find(k:lower(), term) then
+                print("Potential premium function:", k)
+            end
+        end
+    end
+end
